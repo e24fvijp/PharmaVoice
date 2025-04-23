@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  streamlit:
+    build: .
+    container_name: speech_recognition
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - PYTHONUNBUFFERED=1
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_ENABLE_CORS=true
+      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+      - STREAMLIT_SERVER_MAX_UPLOAD_SIZE=200
+      - WATCHDOG_DEBUG=0
+      - PYTHONWARNINGS=ignore
+      - DISPLAY=host.docker.internal:0.0  # WindowsでのX11転送用
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false  # 使用統計の収集を無効化
+      - PULSE_SERVER=host.docker.internal  # PulseAudioサーバーの設定
+    devices:
+      - /dev/snd:/dev/snd  # 音声デバイスのマウント
+    command: streamlit run recording.py --server.runOnSave=true --logger.level=error --server.headless=true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

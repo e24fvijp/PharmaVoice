@@ -1,0 +1,13 @@
+__pycache__
+.corteImitation/
+.streamlit/
+.venv/
+build/
+dist/
+APIs/
+save_dir/
+.env
+corteImitation.spec
+save_dir/pharmacist_list.pickle
+app.log
+pyinstaller_command.txt

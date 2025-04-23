@@ -1,0 +1,10 @@
+__pycache__
+.stash
+build/
+dist/
+func/__pycache__
+save_dir/
+.env
+.gitignore
+command.txt
+corteimitation.spec
