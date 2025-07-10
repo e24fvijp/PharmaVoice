@@ -12,7 +12,7 @@ cffi==1.17.1
 charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
-cryptography==44.0.2
+cryptography>=44.0.2
 distro==1.9.0
 exceptiongroup==1.2.2
 extra-streamlit-components==0.1.80
@@ -30,7 +30,7 @@ jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 MarkupSafe==3.0.2
 narwhals==1.35.0
-numpy==2.2.4
+numpy==1.26.4
 openai==1.75.0
 packaging==24.2
 pandas==2.2.3
@@ -65,3 +65,7 @@ watchdog==6.0.0
 websocket-client==1.6.1
 zope.event==5.0
 zope.interface==7.2
+streamlit==1.32.0
+streamlit-webrtc>=0.44.4
+av==10.0.0
+

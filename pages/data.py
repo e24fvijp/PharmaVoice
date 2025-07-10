@@ -86,16 +86,17 @@ def delete_data(item_key):
         return False
     
 def generate_string_to_paste(text):
-    section_split = {"S":"","O":"","A":"","P":""}
-    for line in text.split("\n"):
-        section = line.strip()[0]
-        section_split[section] += line.split(":")[1].strip() + "\n"
-    result_text = ""
-    for section in section_split.keys():
-        if section_split[section] != "":
-            result_text += section_split[section] + "\n"
-        else:
-            result_text += "\n"
+    return text
+    # section_split = {"S":"","O":"","A":"","P":""}
+    # for line in text.split("\n"):
+    #     section = line.strip()[0]
+    #     section_split[section] += line.split(":")[1].strip() + "\n"
+    # result_text = ""
+    # for section in section_split.keys():
+    #     if section_split[section] != "":
+    #         result_text += section_split[section] + "\n"
+    #     else:
+    #         result_text += "\n"
     return result_text
 
 
@@ -198,7 +199,7 @@ def show_result(data_list):
                 if st.session_state.selected_texts_dict[item_key]:
                     st.markdown("""<div class='custom'>選択したテキスト表示。
                                 下のボックスの右上のコピーボタンを押してください。<br>
-                                薬歴が空の状態でペーストしてください。</div>"""
+                                薬歴に貼り付け.uwsを起動し、SOAPの一番上の入力欄をクリック。</div>"""
                                 , unsafe_allow_html=True)
                     code_text = generate_string_to_paste("\n".join(st.session_state.selected_texts_dict[item_key]))
                     st.code(code_text,language="markdown")
@@ -287,3 +288,4 @@ elif st.session_state["authentication_status"] is False:
     st.error("ユーザー名またはパスワードが正しくありません")
 elif st.session_state["authentication_status"] is None:
     st.warning("ユーザー名とパスワードを入力しログインしてください")
+
